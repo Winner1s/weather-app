@@ -1,23 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Steffy's Weather App</title>
-</head>
-<body>
-    <h1>5 Day Weather Forecast</h1> 
-    <div class="time" id="time">7:00 <span id="am-pm">PM</span></div>
-    <input placeholder="search city"/>
-    <button>search</button>
-    <script src="script.js"></script>
-    <div class="container">
-        <div class="current-info">
-            <div class="date-container">
-                
-            </div>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <center>
+      <h1 id="header">5 Day Weather Forecast</h1>
+      <div class="time" id="time">7:00 <span id="am-pm">PM</span></div>
+      <input type="text" placeholder="search city" id="inputcity" />
+      <button id="searchBtn">search</button>
+      <h2 id="cityname">Detroit</h2>
+    </center>
+
+    <div class="weekdayContainer">
+      <div id="daycontainers">
+        <div class="daycontainer">
+            <p class="weather" id="day1weather">Monday</p>
+            <div class="img"> <img src="assets\images\cloudy.svg" class="imageclass" id="img1" alt=""></div>
+            <p class="minvalue" id="day1min">Loading.....</p>
+            <p class="maxvalue" id="day1max">Loading.....</p>
         </div>
+        <div class="daycontainer">
+            <p class="weather" id="day2weather"></p>
+            <div class="img"> <img src="assets\images\cloudy.svg" class="imageclass" id="img2" alt=""></div>
+            <p class="minvalue" id="day2min">Loading.....</p>
+            <p class="maxvalue" id="day2max">Loading.....</p>
+        </div>
+        <div class="daycontainer">
+            <p class="weather" id="day3weather"></p>
+            <div class="img"> <img src="assets\images\day-cloudy.svg" class="imageclass" id="img3" alt=""></div>
+            <p class="minvalue" id="day3min">Loading.....</p>
+            <p class="maxvalue" id="day3max">Loading.....</p>
+        </div>
+        <div class="daycontainer">
+            <p class="weather" id="day4weather"></p>
+            <div class="img"> <img src="assets\images\rain.svg" class="imageclass" id="img4" alt=""></div>
+            <p class="minvalue" id="day4min">Loading.....</p>
+            <p class="maxvalue" id="day4max">Loading.....</p>
+        </div>
+        <div class="daycontainer">
+            <p class="weather" id="day5weather"></p>
+            <div class="img"> <img src="assets\images\cloudy.svg" class="imageclass" id="img5" alt=""></div>
+            <p class="minvalue" id="day5min">Loading.....</p>
+            <p class="maxvalue" id="day5max">Loading.....</p>
+        </div>
+        </div>
+      </div>
     </div>
-    
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>

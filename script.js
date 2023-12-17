@@ -16,11 +16,25 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((data) => {
         console.log(data); // Log the data object to the console for inspection
 
-        // Get the current date
+        // Get the current date and time
         const currentDate = new Date();
+        const currentTime = currentDate.toLocaleTimeString();
 
-        // Display current date
+        // Display current date and time
         document.getElementById("currentDate").innerHTML = currentDate.toDateString();
+        document.getElementById("centerTime").innerHTML = "Time: " + currentTime;
+
+          // Get the current temperature, wind speed, and humidity
+          const currentTemp = data.list[0].main.temp - 273.15;
+          const currentTempCelsius = currentTemp;
+          const currentTempFahrenheit = (currentTempCelsius * 9) / 5 + 32;
+          const currentWindSpeed = data.list[0].wind.speed;
+          const currentHumidity = data.list[0].main.humidity;
+  
+          // Display current temperature, wind speed, and humidity in the center element
+          document.getElementById("centerTemp").innerHTML = "Temperature: " + currentTempFahrenheit.toFixed(1) + "°F";
+          document.getElementById("centerWindSpeed").innerHTML = "Wind Speed: " + currentWindSpeed.toFixed(1) + " m/s";
+          document.getElementById("centerHumidity").innerHTML = "Humidity: " + currentHumidity.toFixed(1) + "%";
 
         // Process the weather data for future days
         for (let i = 1; i <= 5; i++) {

@@ -1,6 +1,6 @@
 # Steffy's Weather App
 
-![Getting Started](./assets/images/screenshot.png)
+![Getting Started](./assets\images\Screenshot .png)
 
 ## Deployed program
 1. Github - [https://github.com/Winner1s/weather-app](https://github.com/Winner1s/weather-app)

@@ -47,15 +47,18 @@ body {
     display: block;
     background: linear-gradient(white, yellow, green);
     float: left;
-    height: 250px;
+    height: 300px;
     width: 190px;
     margin: 20px;
     border: 5px solid rgb(128, 0, 100);
+    text-align: center;
+    font-weight: bold;
 }
 
 .img {
     height: 140px;
     width: 100px;
+    align-items: center;
 }
 
 .weather {
@@ -70,10 +73,9 @@ body {
     text-align: center;
     display: inline-block;
     border-radius: 5px;
-    height: 25px;
-    width: 85px;
+    width: 75px;
     margin: 0;
-    margin-bottom: 5px;
+    margin-bottom: 0px;
     margin-left: 5px;
 }
 
@@ -81,9 +83,24 @@ body {
     text-align: center;
     display: inline-block;
     border-radius: 5px;
-    height: 25px;
-    width: 85px;
+    width: 75px;
     margin: 0;
-    margin-bottom: 5px;
+    margin-bottom: 0px;
     margin-left: 5px;
 }
+
+#day5date, #day4date, #day3date,#day2date, #day1date {
+    font-size: 16px;
+    font-weight: bolder;
+}
+  
+  
+  #day5humidity, #day4humidity, #day3humidity, #day2humidity, #day1humidity {
+    font-size: 10px;
+  }
+  
+  
+  #day5windspeed, #day4windspeed, #day3windspeed, #day2windspeed, #day1windspeed {
+    font-size: 10px;
+  }
+  

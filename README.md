@@ -1,6 +1,6 @@
 # Steffy's Weather App
 
-![Getting Started](./assets/images/Screenshot.png)
+![Getting Started](./assets/images/screenshot.png)
 
 assets\images\Screenshot .png
 

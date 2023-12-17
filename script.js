@@ -1,10 +1,12 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   function GetAPI() {
     const newName = document.getElementById("inputcity").value;
     const cityName = document.getElementById("cityname");
     cityName.innerHTML = "---" + newName + "--";
 
-    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${newName}&appid=e19062db83c3ae61e40d3c134921009c`)
+    fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?q=${newName}&appid=e19062db83c3ae61e40d3c134921009c`
+    )
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -29,11 +31,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
           // Calculate average, minimum, and maximum temperatures, humidity, and wind speed for the day
           for (let j = 0; j < 8; j++) {
-            temps.push(data.list[(i - 1) * 8 + j].main.temp - 273.15);
+            const tempCelsius = data.list[(i - 1) * 8 + j].main.temp - 273.15;
+            const tempFahrenheit = (tempCelsius * 9) / 5 + 32;
+            temps.push(tempFahrenheit);
             descriptions.push(data.list[(i - 1) * 8 + j].weather[0].description);
             humidities.push(data.list[(i - 1) * 8 + j].main.humidity);
             windSpeeds.push(data.list[(i - 1) * 8 + j].wind.speed);
           }
+
           const averageTemp = temps.reduce((sum, temp) => sum + temp, 0) / temps.length;
           const minTemp = Math.min(...temps);
           const maxTemp = Math.max(...temps);
@@ -49,9 +54,9 @@ document.addEventListener("DOMContentLoaded", function() {
           dayElement.innerHTML = day.toDateString().substring(4);
           dayElement.style.fontWeight = "extra-bold";
           document.getElementById("day" + i + "date").innerHTML = day.toDateString().substring(4);
-          document.getElementById("day" + i + "temp").innerHTML = " " + averageTemp.toFixed(1) + "°c";
-          document.getElementById("day" + i + "min").innerHTML = "Min Temp: " + minTemp.toFixed(1) + "°c";
-          document.getElementById("day" + i + "max").innerHTML = "Max Temp: " + maxTemp.toFixed(1) + "°Fc";
+          document.getElementById("day" + i + "temp").innerHTML = " " + averageTemp.toFixed(1) + "°F";
+          document.getElementById("day" + i + "min").innerHTML = "Min Temp: " + minTemp.toFixed(1) + "°F";
+          document.getElementById("day" + i + "max").innerHTML = "Max Temp: " + maxTemp.toFixed(1) + "°F";
           document.getElementById("day" + i + "humidity").innerHTML = "Humidity: " + averageHumidity.toFixed(1) + "%";
           document.getElementById("day" + i + "windspeed").innerHTML = "Wind Speed: " + averageWindSpeed.toFixed(1) + " m/s";
           document.getElementById("day" + i + "desc").innerHTML = " " + descriptions[0];
@@ -62,3 +67,4 @@ document.addEventListener("DOMContentLoaded", function() {
 
   document.getElementById("searchBtn").addEventListener("click", GetAPI);
 });
+

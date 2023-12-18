@@ -78,7 +78,62 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
   }
+// Function to save search history to localStorage
+function saveSearchHistory(city) {
+  let searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
+  searchHistory.push(city);
+  const maxEntries = 5;
+  if (searchHistory.length > maxEntries) {
+    searchHistory = searchHistory.slice(-maxEntries);
+  }
+  localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
+}
 
+// Function to retrieve search history from localStorage
+function getSearchHistory() {
+  return JSON.parse(localStorage.getItem('searchHistory')) || [];
+}
+
+// Example usage
+const searchInput = document.getElementById('inputcity');
+const searchButton = document.getElementById('searchBtn');
+const searchHistoryContainer = document.getElementById('searchHistoryContainer');
+
+searchButton.addEventListener('click', function() {
+  const city = searchInput.value;
+  saveSearchHistory(city);
+  displaySearchHistory();
+  getWeatherData(city);
+});
+
+function displaySearchHistory() {
+  searchHistoryContainer.innerHTML = '';
+  const searchHistory = getSearchHistory();
+  const historyList = document.createElement('ol');
+  searchHistory.forEach(function(city) {
+    const historyItem = document.createElement('li');
+    const historyLink = document.createElement('a');
+    historyLink.textContent = city;
+    historyLink.href = "#";
+    historyLink.addEventListener('click', function() {
+      searchInput.value = city;
+      searchButton.click();
+    });
+    historyItem.appendChild(historyLink);
+    historyList.appendChild(historyItem);
+    });
+    searchHistoryContainer.appendChild(historyList);
+}
+
+function getWeatherData(city) {
+  // Your code to fetch weather data and display it goes here
+  // Use the `city` parameter to fetch the weather data for the selected city
+}
+
+// Call the displaySearchHistory function when the app loads
+document.addEventListener('DOMContentLoaded', function() {
+  displaySearchHistory();
+});
   document.getElementById("searchBtn").addEventListener("click", GetAPI);
 });
 
